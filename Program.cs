@@ -12,13 +12,13 @@ namespace EMICalculator
             
 
             Console.WriteLine("Enter price of vehicle");
-            obj1.P = Convert.ToDecimal(Console.ReadLine());
+            obj1.Principal = Convert.ToDecimal(Console.ReadLine());
 
             Console.WriteLine("Enter rate of interest ");
-            obj1.i = Convert.ToDecimal(Console.ReadLine());
+            obj1.interest = Convert.ToDecimal(Console.ReadLine());
 
             Console.WriteLine("Enter loan duration");
-            obj1.t = Convert.ToInt32(Console.ReadLine());
+            obj1.time = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter monthly compounding");
             obj1.n = Convert.ToInt32(Console.ReadLine());
