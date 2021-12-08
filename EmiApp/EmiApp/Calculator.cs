@@ -9,7 +9,7 @@
             {
                 var rate = request.InterestRateInPercentage / 100;
                 var power = request.LoanDurationInYearCount * rate;
-                var accumulated = (double)request.Principal * Math.Pow(2.7183, power) ;
+                var accumulated = (double)request.Principal * System.Math.Pow(2.7183, power) ;
                 // convert to response object
                 response.EmiPayment = (decimal)accumulated;
                 return response;
@@ -29,7 +29,7 @@
             {
                 var power = request.LoanDurationInYearCount * 365;
                 var rate = request.InterestRateInPercentage / 100;
-                var accumulated = ((double)request.Principal * Math.Pow(1 + rate / 365, power)) - (double)request.Principal;
+                var accumulated = ((double)request.Principal * System.Math.Pow(1 + rate / 365, power)) - (double)request.Principal;
                 // convert to response object
                 response.EmiPayment = (decimal)accumulated;
                 return response;
@@ -49,7 +49,7 @@
             {
                 var power = request.LoanDurationInYearCount * 12;
                 var rate = request.InterestRateInPercentage / 100;
-                var accumulated = (double)request.Principal * Math.Pow(1 + rate / 12, power);
+                var accumulated = (double)request.Principal * System.Math.Pow(1 + rate / 12, power);
                 // convert to response object
                 response.EmiPayment = (decimal) accumulated;
                 return response;
