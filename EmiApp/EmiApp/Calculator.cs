@@ -11,6 +11,7 @@
                 var power = request.LoanDurationInYearCount * rate;
                 var accumulated = (double)request.Principal * System.Math.Pow(2.7183, power) ;
                 // convert to response object
+                response.EmiPaymentType = "Continuous EMI";
                 response.EmiPayment = (decimal)accumulated;
                 return response;
             }
@@ -31,6 +32,7 @@
                 var rate = request.InterestRateInPercentage / 100;
                 var accumulated = ((double)request.Principal * System.Math.Pow(1 + rate / 365, power)) - (double)request.Principal;
                 // convert to response object
+                response.EmiPaymentType = "Daily EMI";
                 response.EmiPayment = (decimal)accumulated;
                 return response;
             }
@@ -51,6 +53,7 @@
                 var rate = request.InterestRateInPercentage / 100;
                 var accumulated = (double)request.Principal * System.Math.Pow(1 + rate / 12, power);
                 // convert to response object
+                response.EmiPaymentType = "Monthly EMI";
                 response.EmiPayment = (decimal) accumulated;
                 return response;
                 
