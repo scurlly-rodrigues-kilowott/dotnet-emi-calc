@@ -8,6 +8,7 @@ namespace EmiAppAPI.Controllers
     [ApiController]
     public class EmiController : ControllerBase
     {
+
         [HttpPost]
         [Route("api/[controller]/CalculateMonthlyEmi")]
        // [HttpPost(Name = "CalculateMontlyEmi")]
@@ -47,5 +48,7 @@ namespace EmiAppAPI.Controllers
 
             return emiContinous;
         }
+
+
     }
 }
