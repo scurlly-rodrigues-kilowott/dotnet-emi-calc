@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculation</title>
+</head>
+<body>
+    <form method="post" name="ApiForm" >
+        <label for="principal">Principal Amount:</label>
+        <input type="text" id="principal" name="principal"><br><br>
+        <label for="interest">Interest:</label>
+        <input type="text" id="interest" name="interest"><br><br>
+        <label for="duration">Loan Duration:</label>
+        <input type="text" id="duration" name="duration"><br><br>
+        <input type="submit" value="Submit">
+     </form>
+     <p>Daily EMI is:</p>
+<p id="Emi"></p>
+     
+     <script>
+
+document.forms["ApiForm"].addEventListener("submit", e => {
+         e.preventDefault();
+         const form = document.forms["ApiForm"];
+         var api_url = "https://localhost:7092/api/Emi/CalculateDailyEmi";
+         let response = fetch(api_url, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+            principal: form.elements["principal"].value,
+            interestRateInPercentage: form.elements["interest"].value,
+            loanDurationInYearCount: form.elements["duration"].value
+        })
+    });
+
+    response.then(res =>
+            res.json()).then(d => {
+                console.log(d)
+                show(d);
+            })
+    
+  
+});
+
+function show(d){
+let emi = d.emiPayment; 
+    document.getElementById("Emi").innerHTML = emi;  
+}
+
+     </script>
+</body>
+</html>
